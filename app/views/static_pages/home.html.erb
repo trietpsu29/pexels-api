@@ -1,0 +1,14 @@
+<h1>My Pexels Collection 📸</h1>
+<%= form_with url:root_path, method: :get do |f|%>
+  <%= f.label :collection_id %>
+  <%= f.text_field :collection_id %>
+  <%= f.submit "Search!"%>
+<% end %>
+<% if @response.present?%>
+  <h2>Collection Photos</h2>
+  <% @response.each do |media|%>
+    <% if media["type"]=="Photo" %>
+      <span><%= image_tag media["src"]["large"]%></span>
+    <% end %>
+  <% end %>
+<% end %>
